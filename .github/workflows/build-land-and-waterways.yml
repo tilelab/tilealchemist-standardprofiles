@@ -35,9 +35,11 @@ env:
   TILEALCHEMIST_REF: main
 
 jobs:
-  # Both profiles are single self-contained files (their dependencies live
-  # in their own PEP 723 blocks, which the pipeline reads), so this is the
-  # whole handover.
+  # Both profiles are single self-contained files that import nothing beyond
+  # tilealchemist itself, which the pipeline installs before it loads them --
+  # in prepare-shards to price them and in build-shards to run them. Neither
+  # needs a PEP 723 dependency block of its own, so this upload is the whole
+  # handover.
   profiles:
     runs-on: ubuntu-latest
     steps:
@@ -52,6 +54,17 @@ jobs:
   build:
     needs: profiles
     uses: tilelab/tilealchemist/.github/workflows/_pipeline.yml@main
+    # The pipeline's merge-axes job records what this run actually cost onto a
+    # `state` branch in *this* repository, so the next run is partitioned by
+    # what the last few measured rather than by the reviewed constants in
+    # cost.py. It pushes with this repository's own token, and a called
+    # workflow may only narrow the permissions its caller granted, never widen
+    # them -- so the grant has to sit here, on the calling job. Without it the
+    # build still succeeds and merge-axes fails inside its `continue-on-error`,
+    # costing the calibration and nothing else. See TileAlchemist's
+    # docs/ARCHITECTURE.md "The state branch, and the job that writes it".
+    permissions:
+      contents: write
     with:
       profile: ./land.py,./cropped_waterways.py
       profile_artifact: profiles
