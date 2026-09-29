@@ -1,0 +1,40 @@
+{
+  "profiles": {
+    "cropped-waterways": {
+      "bytes_per_output_tile": [
+        327.52319327194317
+      ],
+      "seconds_per_tile": [
+        0.00045543301946223617
+      ]
+    },
+    "land": {
+      "bytes_per_output_tile": [
+        95.76601335753188
+      ],
+      "seconds_per_tile": [
+        0.002778845026897797
+      ]
+    }
+  },
+  "shared": {
+    "manifest_record": [
+      1.1728911791800344e-06
+    ],
+    "written_byte": [
+      1.1459491229277653e-07
+    ]
+  },
+  "sources": {
+    "build.protomaps.com-protomaps": {
+      "build": "20260928 (basemap 4.15.2)",
+      "decoded_byte": [
+        6.68516657435876e-07
+      ],
+      "fetched_byte": [
+        2.1478705004580227e-08
+      ]
+    }
+  },
+  "version": 1
+}
