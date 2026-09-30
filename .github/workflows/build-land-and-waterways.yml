@@ -61,10 +61,14 @@ jobs:
     # workflow may only narrow the permissions its caller granted, never widen
     # them -- so the grant has to sit here, on the calling job. Without it the
     # build still succeeds and merge-axes fails inside its `continue-on-error`,
-    # costing the calibration and nothing else. See TileAlchemist's
-    # docs/ARCHITECTURE.md "The state branch, and the job that writes it".
+    # costing the calibration and nothing else. `actions: read` lets merge-axes
+    # time this run's worker jobs, which is where worker_setup_seconds is
+    # measured from; without it that one coefficient stays at the reviewed
+    # 39s. See TileAlchemist's docs/ARCHITECTURE.md "The state branch, and the
+    # job that writes it".
     permissions:
       contents: write
+      actions: read
     with:
       profile: ./land.py,./cropped_waterways.py
       profile_artifact: profiles
