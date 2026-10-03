@@ -1,0 +1,31 @@
+{
+  "shared": {
+    "manifest_record": [
+      9.16642891122614e-07
+    ],
+    "transform_parallelism": [
+      3.914961229654597
+    ],
+    "worker_setup_seconds": [
+      36.907210281270665
+    ],
+    "written_byte": [
+      1.0981031565921761e-07
+    ]
+  },
+  "sources": {
+    "build.protomaps.com-protomaps": {
+      "build": "20261002 (basemap 4.15.2)",
+      "decode_call": [
+        0.0
+      ],
+      "decoded_byte": [
+        5.950209330360078e-07
+      ],
+      "fetched_byte": [
+        2.7419259161541927e-08
+      ]
+    }
+  },
+  "version": 1
+}
