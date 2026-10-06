@@ -100,7 +100,7 @@ const map = new maplibregl.Map({
     sources: {
       land: {
         type: "vector",
-        url: "pmtiles://https://f003.backblazeb2.com/file/tilealchemist/land.pmtiles",
+        url: "pmtiles://https://tilealchemist.foxandfeature.com/land.pmtiles",
       },
     },
     layers: [
